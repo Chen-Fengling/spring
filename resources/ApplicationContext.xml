@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置Bean-->
+    <!--class: bean的全类名,通过IOC反射的方式在容器中创建Bean，要求Bean中必须有无参构造器-->
+    <!--id代表Bean标识，id唯一-->
+    <bean id="helloWorld" class="com.ccsdt.HelloWorld">
+        <property name="name" value="spring"/>
+    </bean>
+
+    <!--默认采用顺序配置Bean属性，并默认使用参数相同的第一个构造器-->
+    <bean id="car1" class="com.ccsdt.Car">
+        <constructor-arg value="Audio"/>
+        <constructor-arg value="Shanghai"/>
+        <constructor-arg value="88.8"/>
+    </bean>
+
+    <!--采用顺序配置Bean属性,与car1等价，并默认使用参数相同的第一个构造器-->
+    <bean id="car2" class="com.ccsdt.Car">
+        <constructor-arg value="Audio" index="0"/>
+        <constructor-arg value="Shanghai" index="1"/>
+        <constructor-arg value="88.8" index="2"/>
+    </bean>
+
+    <!--指定参数Type，区别使用不同的构造器-->
+    <bean id="car3" class="com.ccsdt.Car">
+        <constructor-arg value="SGM" type="java.lang.String"/>
+        <constructor-arg value="Shanghai" type="java.lang.String"/>
+        <constructor-arg value="8" type="int"/>
+    </bean>
+
+    <!--指定参数Type，区别使用不同的构造器-->
+    <!--特殊字符可以使用CDATA包裹起来-->
+    <bean id="car4" class="com.ccsdt.Car">
+        <constructor-arg value="SGM" index="0"/>
+        <constructor-arg type="java.lang.String">
+            <value><![CDATA[<Shanghai&*>]]></value>
+        </constructor-arg>
+        <constructor-arg type="double" value="25.66"/>
+    </bean>
+
+    <bean id="person" class="com.ccsdt.Person">
+        <property name="name" value="Jerry"/>
+        <property name="age" value="15" />
+        <property name="car" >
+            <bean class="com.ccsdt.Car">
+                <property name="amount" value="4"/>
+                <property name="corp" value="Beijing"/>
+                <property name="banch" value="Demo"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
