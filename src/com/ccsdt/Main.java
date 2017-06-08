@@ -1,5 +1,7 @@
 package com.ccsdt;
 
+import com.ccsdt.collection.NewTeacher;
+import com.ccsdt.collection.Teacher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -42,6 +44,24 @@ public class Main {
 
         Person person = (Person)appletContext.getBean("person");
         System.out.println(person);
+
+        car = (Car)appletContext.getBean("car5");
+        System.out.println(car);
+
+        person = (Person)appletContext.getBean("person2");
+        System.out.println(person);
+
+        Teacher teacher = (Teacher)appletContext.getBean("teacher");
+        System.out.println(teacher);
+
+        NewTeacher newTeacher = (NewTeacher)appletContext.getBean("NewTeacher");
+        System.out.println(newTeacher);
+
+        Teacher teacher2 = (Teacher)appletContext.getBean("teacher2");
+        System.out.println(teacher2);
+
+        Teacher teacher3 = (Teacher)appletContext.getBean("teacher3");
+        System.out.println(teacher3);
 
 
     }

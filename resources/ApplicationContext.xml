@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--配置Bean-->
     <!--class: bean的全类名,通过IOC反射的方式在容器中创建Bean，要求Bean中必须有无参构造器-->
@@ -41,6 +42,7 @@
         <constructor-arg type="double" value="25.66"/>
     </bean>
 
+    <!--内部bean-->
     <bean id="person" class="com.ccsdt.Person">
         <property name="name" value="Jerry"/>
         <property name="age" value="15" />
@@ -52,5 +54,61 @@
             </bean>
         </property>
     </bean>
+
+    <!--赋值为null-->
+    <bean id="car5" class="com.ccsdt.Car">
+        <constructor-arg value="SGM" index="0"/>
+        <constructor-arg><null/></constructor-arg>
+        <constructor-arg type="double" value="25.66"/>
+    </bean>
+
+    <!--为级联属性赋值，注意需要先初始化再对级联属性赋值-->
+    <bean id="person2" class="com.ccsdt.Person">
+        <property name="name" value="Jerry"/>
+        <property name="age" value="15" />
+        <property name="car" ref="car1"/>
+        <property name="car.amount" value="900"/>
+    </bean>
+
+    <!--集合属性赋值-->
+    <bean id="teacher" class="com.ccsdt.collection.Teacher">
+        <property name="name" value="Jerry"/>
+        <property name="age" value="15" />
+        <property name="cars">
+            <list>
+                <ref bean="car1"/>
+                <ref bean="car2"/>
+                <ref bean="car3"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--Map 属性赋值-->
+    <bean id="NewTeacher" class="com.ccsdt.collection.NewTeacher">
+        <property name="name" value="Chen"/>
+        <property name="age" value="28"/>
+        <property name="cars">
+            <map>
+                <entry key="AA" value-ref="car1"/>
+                <entry key="BB" value-ref="car2"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--配置单例集合bean，以供其他bean进行引用，需要配置util 命名空间-->
+    <util:list id="cars">
+        <ref bean="car1"/>
+        <ref bean="car2"/>
+        <ref bean="car3"/>
+    </util:list>
+
+    <bean id="teacher2" class="com.ccsdt.collection.Teacher">
+        <property name="name" value="Runyu"/>
+        <property name="age" value="23"/>
+        <property name="cars" ref="cars"/>
+    </bean>
+
+    <!--通过p命名空间给bean赋值，需要先导入p命名控件-->
+    <bean id="teacher3" class="com.ccsdt.collection.Teacher" p:name="Feng" p:age="23" p:cars-ref="cars"/>
 
 </beans>

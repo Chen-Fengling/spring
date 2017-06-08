@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        使用bean的scope属性来配置bean的作用域
+        singleton：单例（默认值），在容器初始化时创建bean的实例，在容器整个生命周期只会存在一个该bean的对象
+        prototype：原型的，不会在容器初始化时被创建，而是在每次请求该bean对象时创建一个新的bean并返回
+        -->
+    <bean id="address" class="com.ccsdt.scope.Address" scope="prototype"
+          p:street="PuDong" p:city="Shanghai"/>
+
+</beans>

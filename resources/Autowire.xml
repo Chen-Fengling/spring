@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.ccsdt.autowire.Address" p:stree="Guang" p:city="Shanghai"/>
+    <bean id="car" class="com.ccsdt.autowire.Car" p:brand="Audi" p:price="32536.2"/>
+    <!--不使用自动装配-->
+    <bean id="person" class="com.ccsdt.autowire.Person" p:address-ref="address" p:car-ref="car"/>
+    <!--自动装配,可以使用autowire属性选择自动装配的方式，byName根据bean的名字以及setter风格的属性名进行匹配装配-->
+    <!--如果没有匹配的属性则不装配-->
+    <bean id="person2" class="com.ccsdt.autowire.Person" autowire="byName"/>
+</beans>

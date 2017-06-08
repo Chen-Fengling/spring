@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 抽象bean：abstract="true 该属性表示为抽象bean，改bean的配置只能被集成，spring不会实例化这个bean
+    若某个bean的class没有被指定则，abstract必须i为true-->
+    <bean id="address" class="com.ccsdt.relation.Address" p:city="Beijing" p:street="WuDaoKou" abstract="true"/>
+    <!--bean的继承：使用bean的parent属性来指定继承某个bean的配置-->
+    <bean id="address2" parent="address" p:street="ChangPing"/>
+
+    <bean id="car" class="com.ccsdt.autowire.Car" p:brand="BMW" p:price="32568.2"/>
+    <!--bean的依赖：使用depends-on属性指定依赖的bean
+        配置person是必须有一个关联的car，也就是person这个bean依赖于car这个bean-->
+    <bean id="person" class="com.ccsdt.relation.Person" p:address-ref="address2" depends-on="car"/>
+</beans>
