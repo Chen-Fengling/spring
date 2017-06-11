@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--指定Spring IOC容器扫描的包-->
+    <!--可以通过resource-pattern指定扫描的资源-->
+    <!--<context:component-scan base-package="com.ccsdt.annotation" resource-pattern="controller/*.class"/>-->
+
+    <!--
+        context:exclude-filter：过滤器，不包含该表达式中的值
+        context:include-filter：过滤器，包含表达式中的值，通常需要与use-default-filters配合使用（需设置为false）
+
+        type类型常用为annotation与assignable
+        annotation：过滤掉所有标注了xxxx注解的类，表达式需要指定为Spring的注解类
+        assignable：过滤掉所有继承或扩展了xxx的类，表达式需要指定为用户创建的某个类
+    -->
+    <context:component-scan base-package="com.ccsdt.annotation">
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+        <!--<context:exclude-filter type="assignable" expression="com.ccsdt.annotation.repository.UserRepository"/>-->
+        <!--<context:include-filter type="assignable" expression="com.ccsdt.annotation.repository.UserRepository"/>-->
+    </context:component-scan>
+
+</beans>
