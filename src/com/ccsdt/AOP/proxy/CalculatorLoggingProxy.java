@@ -1,10 +1,9 @@
-package com.ccsdt.AOP_proxy;
+package com.ccsdt.AOP.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by HP on 2017/6/15.

@@ -20,6 +20,7 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-test-4.3.8.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-core-4.3.8.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-context-4.3.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aspectjweaver-1.8.0.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

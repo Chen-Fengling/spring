@@ -1,4 +1,4 @@
-package com.ccsdt.AOP_proxy;
+package com.ccsdt.AOP.proxy;
 
 /**
  * Created by HP on 2017/6/15.
