@@ -11,7 +11,7 @@ public class Main {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("AOP/Spring-AOP.xml");
         Calculator calculator = ctx.getBean(Calculator.class);
 
-        int result=calculator.add(4,6);
+        int result=calculator.div(4,2);
         System.out.println(result);
     }
 }
