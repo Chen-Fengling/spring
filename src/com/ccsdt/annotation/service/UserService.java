@@ -19,7 +19,7 @@ public class UserService {
     private UserComponent userComponent;
 
     public void test(){
-        System.out.println("UserService Test.....");
+        System.out.println("UserService ActorDao.....");
         userRepository.add();
     }
 }
